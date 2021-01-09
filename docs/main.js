@@ -21,6 +21,7 @@ function togglePlay(element){
 btnAddFan.addEventListener('click', function(){
     let p = document.createElement("p");
     p.classList.add("fan");
+    // p.classList.add("appear");
     p.addEventListener('click', 
     function(e)
     {
