@@ -1,6 +1,6 @@
 #mainContainer {
     display: grid;
-    grid-template-rows: auto 40px;
+    grid-template-rows: 40px auto;
     width: 100vw;
     height: 100vh;
 }
