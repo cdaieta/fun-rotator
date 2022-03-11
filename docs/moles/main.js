@@ -1,4 +1,3 @@
-
 const MAX_FANS = 12;
 const DELAY = 1500;
 
