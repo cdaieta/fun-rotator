@@ -6,32 +6,37 @@ var btnAddFan = document.querySelector("#btnAddFan");
 
 var state = {
     numFans: 0,
-    audioPlaying : false
+    audioPlaying: false
 }
 
 function togglePlay(element) {
+    let action = null;
     if (element.getAttribute("moving") == "true") {
         element.setAttribute("moving", "false");
         element.classList.remove("animationFan");
+        action = "STOPPING";
     }
     else {
         element.classList.remove("animationFan");
         void element.offsetWidth;
         element.classList.add("animationFan");
         element.setAttribute("moving", "true");
+        action = "MOVING";
     }
 
-    if (atLeastOneMoving()) {
+    let amountMoving = atLeastOneMoving();
+
+    if (amountMoving == 1 && action == "MOVING") {
         audio.currentTime = 0;
         audio.play();
     }
-    else {
+    else if (amountMoving == 0) {
         audio.pause();
     }
 }
 
 function atLeastOneMoving() {
-    return [...document.querySelector("#game").childNodes].some(x=>x.getAttribute("moving")=="true");
+    return [...document.querySelector("#game").childNodes].filter(x => x.getAttribute("moving") == "true").length;
 }
 
 btnAddFan.addEventListener('click', function () {
